@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as S from './styles'
 import logoImg from '../../img/logo.svg'
 import { InputProduct } from "../InputProduct";
-import acount from '../../img/account.svg'
+import acount from '../../img/account.svg';
 import { Bag } from "../Bag";
+import { CartProducst } from "../CartProducts";
+import { BagContext } from "../../context/cartOpenContext";
 
 export function Header() {
 
+    const { isOpen } = useContext(BagContext);
+
     return (
         <S.HeaderContainer>
+            {isOpen && <CartProducst />}
             <S.Logo>
                 <a href="/"><img src={logoImg} alt="Logo Wine" /></a>
             </S.Logo>

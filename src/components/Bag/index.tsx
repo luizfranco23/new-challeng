@@ -1,26 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as S from './styles'
 import bagImg from '../../img/bag.png'
+import { BagContext } from "../../context/cartOpenContext";
+
 
 export function Bag() {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [quantity, setQuantity] = useState(0);
-    const [isOpen, setIsOpen] = useState(false)
+
+    const { isOpen, setIsOpen } = useContext(BagContext);
 
     const handleBagClick = () => {
-        setIsOpen(!isOpen);
+        setIsOpen(!isOpen)
+        console.log(isOpen);
+
     }
 
     return (
         <S.BagContainer>
             <img src={bagImg} alt="Sacola de Produtos" onClick={handleBagClick} />
             <S.QuantityItems>{quantity}</S.QuantityItems>
-            {
-                isOpen && (
-                    <h1>v</h1>
-                )
-            }
         </S.BagContainer>
     );
 }

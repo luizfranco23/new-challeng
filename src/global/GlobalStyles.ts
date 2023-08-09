@@ -26,7 +26,7 @@ font-family: 'Lato', sans-serif;
 box-sizing: border-box;
 }
 
-button, a {
+button, a, img{
     cursor: pointer;
 }
 

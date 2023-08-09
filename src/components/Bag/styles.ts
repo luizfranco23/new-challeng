@@ -17,7 +17,3 @@ export const QuantityItems = styled.div`
   border-radius: 50%;
   color: var(--green-secundary);
 `;
-
-export const Cart = styled.div``;
-
-export const CartContainer = styled.div``;
