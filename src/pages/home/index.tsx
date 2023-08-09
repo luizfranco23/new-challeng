@@ -1,8 +1,15 @@
 import React from "react";
+import * as S from './styles'
 import { Header } from "../../components/Header";
+import { CatalogProducts } from "../../components/CatalogProducts";
 
 export default function Home() {
     return (
-        <Header />
+        <S.Home>
+            <Header />
+            <S.ContainerHome>
+                <CatalogProducts />
+            </S.ContainerHome>
+        </S.Home>
     )
 }

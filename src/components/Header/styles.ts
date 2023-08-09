@@ -2,11 +2,9 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
   display: flex;
-  position: fixed;
   width: 100%;
   align-items: center;
-  justify-content: space-around;
-  padding: 28px 157px;
+  padding: 28px 9%;
   background: var(--white-primary);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.35);
 `;
@@ -14,7 +12,8 @@ export const HeaderContainer = styled.div`
 export const Logo = styled.div``;
 
 export const Links = styled.nav`
-  padding: 0 0 0 83px;
+  padding-left: 8%;
+  margin-right: 10px;
 
   ul {
     display: flex;
@@ -42,7 +41,7 @@ export const Links = styled.nav`
 
   a:hover::after {
     content: "";
-    bottom: -180%;
+    bottom: -250%;
     left: 0;
     width: 100%;
     height: 2px;
@@ -53,7 +52,7 @@ export const Links = styled.nav`
 
 export const Icons = styled.div`
   display: flex;
-  padding: 0 0 0 217px;
+  padding-left: 35%;
   align-items: center;
   justify-content: center;
   gap: 34px;
