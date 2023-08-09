@@ -2,6 +2,8 @@ import React from "react";
 import * as S from './styles'
 import logoImg from '../../img/logo.svg'
 import { InputProduct } from "../InputProduct";
+import acount from '../../img/account.svg'
+import { Bag } from "../Bag";
 
 export function Header() {
 
@@ -21,6 +23,10 @@ export function Header() {
             </S.Links>
             <S.Icons>
                 <InputProduct />
+                <S.Acount>
+                    <a href="#"><img src={acount} alt="Informações do Usuário" /></a>
+                </S.Acount>
+                <Bag />
             </S.Icons>
         </S.HeaderContainer>
     );
