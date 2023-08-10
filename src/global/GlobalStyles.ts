@@ -14,8 +14,6 @@ export const GloabalStyle = createGlobalStyle`
 --gray-primary: #888888;
 --gray-secondary: #F5F5F5;
 --white-primary: #fff; 
---font-lato: font-family: 'Lato', sans-serif;
---font-noto: font-family: 'Noto Sans', sans-serif;
 }
 
 
