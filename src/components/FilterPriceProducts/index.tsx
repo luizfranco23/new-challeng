@@ -17,12 +17,18 @@ export function FilterPrice() {
     ];
 
     useEffect(() => {
-        if (selectedRange != null) {
+        if (selectedRange === null) {
+            setProducts(originalProducts);
+        } else {
             const filteredProducts = originalProducts.filter(
                 product =>
                     product.price >= selectedRange.min && product.price <= selectedRange.max
             );
-            setProducts(filteredProducts);
+            if (filteredProducts.length === 0) {
+                setProducts(originalProducts);
+            } else {
+                setProducts(filteredProducts);
+            }
             console.log(filteredProducts);
         }
     }, [selectedRange, setProducts, originalProducts]);

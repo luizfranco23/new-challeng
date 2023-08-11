@@ -2,10 +2,7 @@ import styled from "styled-components";
 
 export const FilterContainer = styled.div`
   display: flex;
-  align-items: start;
-  justify-content: center;
   flex-direction: column;
-
   p {
     padding-top: 32px;
   }
