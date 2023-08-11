@@ -4,6 +4,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
+  justify-content: space-between;
   padding: 28px 9%;
   background: var(--white-primary);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.35);
@@ -12,9 +13,7 @@ export const HeaderContainer = styled.div`
 export const Logo = styled.div``;
 
 export const Links = styled.nav`
-  padding-left: 8%;
-  margin-right: 10px;
-
+  padding-right: 13%;
   ul {
     display: flex;
     gap: 48px;
@@ -27,7 +26,7 @@ export const Links = styled.nav`
   a {
     font-style: none;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.2rem;
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
@@ -52,8 +51,7 @@ export const Links = styled.nav`
 
 export const Icons = styled.div`
   display: flex;
-  padding-left: 35%;
-  align-items: center;
+
   justify-content: center;
   gap: 34px;
 `;

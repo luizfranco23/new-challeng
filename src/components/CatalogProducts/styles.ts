@@ -14,11 +14,13 @@ export const QuantityProducts = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 32px;
-  display: grid;
-  max-width: 800px;
+  width: 832px;
 `;
 
 export const CardProduct = styled.div`
@@ -27,7 +29,7 @@ export const CardProduct = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 260px;
+  width: 256px;
   height: 350px;
   box-shadow: 0px 9.733839988708496px 14.600760459899902px 0px
     rgba(0, 0, 0, 0.1);

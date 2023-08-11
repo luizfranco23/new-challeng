@@ -3,13 +3,16 @@ import { ProductProvider } from "./context/ApiContext";
 import { GloabalStyle } from "./global/GlobalStyles";
 import Rotas from "./routes/routes";
 import { BagProvider } from "./context/cartOpenContext";
+import { CartProvider } from "./context/cartContext";
 
 function App() {
   return (
     <ProductProvider>
       <BagProvider>
-        <GloabalStyle />
-        <Rotas />
+        <CartProvider>
+          <GloabalStyle />
+          <Rotas />
+        </CartProvider>
       </BagProvider>
     </ProductProvider>
   );

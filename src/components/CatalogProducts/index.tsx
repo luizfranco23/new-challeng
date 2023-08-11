@@ -2,18 +2,20 @@ import React, { useContext } from "react";
 import * as S from './styles'
 import { ProductContext } from "../../context/ApiContext";
 import type { Wine } from "../../types/products";
+import { useCart } from "../../context/cartContext";
 
 export function CatalogProducts() {
 
     const { products } = useContext(ProductContext)
+    const { addToCart } = useCart();
+    const quantidade = products.length
 
     return (
         <S.ProductsContainer>
             <S.QuantityProducts>
-                <strong>49</strong>
+                <strong>{quantidade}</strong>
                 <p>produtos encontrados</p>
             </S.QuantityProducts>
-
             <S.CardContainer>
                 {products.map((item: Wine) => (
                     <S.InvolvedProduct key={item.id}>
@@ -37,7 +39,7 @@ export function CatalogProducts() {
                             </S.MemberWine>
                             <S.NoMember>NÃO SÓCIO R${item.priceNonMember}</S.NoMember>
                         </S.CardProduct>
-                        <S.Button>ADICIONAR</S.Button>
+                        <S.Button onClick={() => { addToCart(item); }}>ADICIONAR</S.Button>
                     </S.InvolvedProduct>
                 ))}
             </S.CardContainer>
