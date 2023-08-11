@@ -9,12 +9,11 @@ export const GloabalStyle = createGlobalStyle`
 --pink-secondary: #B6116E;
 --orange-primary: #F79552;
 --green-primary: #7EBC43;
+--green-secundary: #4FBFA5;
 --black-primary: #1D1D1B;
 --gray-primary: #888888;
 --gray-secondary: #F5F5F5;
 --white-primary: #fff; 
---font-lato: font-family: 'Lato', sans-serif;
---font-noto: font-family: 'Noto Sans', sans-serif;
 }
 
 
@@ -25,7 +24,7 @@ font-family: 'Lato', sans-serif;
 box-sizing: border-box;
 }
 
-button, a {
+button, a, img{
     cursor: pointer;
 }
 
