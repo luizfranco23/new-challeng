@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, startTransition, useEffect, useState } from 'react';
 import { fetchProductsFromAPI } from '../services/apiServices';
 import type { Wine } from '../types/products';
 
@@ -22,8 +22,10 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
         async function fetchProducts() {
             try {
                 const fetchedProducts = await fetchProductsFromAPI();
-                setOriginalProducts(fetchedProducts);
-                setProducts(fetchedProducts);
+                startTransition(() => {
+                    setOriginalProducts(fetchedProducts);
+                    setProducts(fetchedProducts);
+                });
             } catch (error) {
 
             }
@@ -31,7 +33,6 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
 
         void fetchProducts();
     }, []);
-
     return (
         <ProductContext.Provider value={{ products, setProducts, originalProducts }}>
             {children}

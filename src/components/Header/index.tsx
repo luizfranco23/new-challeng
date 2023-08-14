@@ -6,6 +6,7 @@ import acount from '../../img/account.svg';
 import { Bag } from "../Bag";
 import { CartProducst } from "../CartProducts";
 import { BagContext } from "../../context/cartOpenContext";
+import Menu from '../../img/menu.png'
 
 export function Header() {
 
@@ -14,16 +15,21 @@ export function Header() {
     return (
         <S.HeaderContainer>
             {isOpen && <CartProducst />}
-            <S.Logo>
-                <a href="/"><img src={logoImg} alt="Logo Wine" /></a>
-            </S.Logo>
+            <S.LogoContainer>
+                <S.MenuLinks>
+                    <img src={Menu} alt="Menu" />
+                </S.MenuLinks>
+                <S.Logo>
+                    <a href="/"><img src={logoImg} alt="Logo Wine" /></a>
+                </S.Logo>
+            </S.LogoContainer>
             <S.Links>
                 <ul>
-                    <li><a href="/">Clube</a></li>
+                    <li><a href="#">Clube</a></li>
                     <li><a href="/">Loja</a></li>
-                    <li><a href="/">Produtores</a></li>
-                    <li><a href="/">Ofertas</a></li>
-                    <li><a href="/">Eventos</a></li>
+                    <li><a href="#">Produtores</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="#">Eventos</a></li>
                 </ul>
             </S.Links>
             <S.Icons>

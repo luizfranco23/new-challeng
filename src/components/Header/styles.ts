@@ -10,10 +10,25 @@ export const HeaderContainer = styled.div`
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.35);
 `;
 
+export const LogoContainer = styled.div`
+  display: flex;
+`;
+
 export const Logo = styled.div``;
 
+export const MenuLinks = styled.div`
+  display: none;
+  img {
+    width: 60%;
+  }
+
+  @media (max-width: 1300px) {
+    display: block;
+  }
+`;
+
 export const Links = styled.nav`
-  padding-right: 13%;
+  margin-right: 13%;
   ul {
     display: flex;
     gap: 48px;
@@ -40,20 +55,27 @@ export const Links = styled.nav`
 
   a:hover::after {
     content: "";
-    bottom: -250%;
+    bottom: -220%;
     left: 0;
     width: 100%;
     height: 2px;
     position: absolute;
     background-color: #d14b8f;
   }
+
+  @media (max-width: 1300px) {
+    display: none;
+  }
 `;
 
 export const Icons = styled.div`
   display: flex;
-
   justify-content: center;
   gap: 34px;
+
+  @media (max-width: 1300px) {
+    gap: 12px;
+  }
 `;
 
 export const Acount = styled.div`
@@ -61,5 +83,9 @@ export const Acount = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: 1300px) {
+    display: none;
   }
 `;

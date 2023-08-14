@@ -4,14 +4,17 @@ import { GloabalStyle } from "./global/GlobalStyles";
 import Rotas from "./routes/routes";
 import { BagProvider } from "./context/cartOpenContext";
 import { CartProvider } from "./context/cartContext";
+import { CartProductProvider } from "./context/ModifyQuantityProductCart";
 
 function App() {
   return (
     <ProductProvider>
       <BagProvider>
         <CartProvider>
-          <GloabalStyle />
-          <Rotas />
+          <CartProductProvider>
+            <GloabalStyle />
+            <Rotas />
+          </CartProductProvider>
         </CartProvider>
       </BagProvider>
     </ProductProvider>
