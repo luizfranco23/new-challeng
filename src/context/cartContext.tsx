@@ -3,12 +3,14 @@ import type { Wine } from "../types/products";
 
 interface CartContextType {
     cart: Wine[];
-    addToCart: (product: Wine) => void;
+    setCart: React.Dispatch<React.SetStateAction<Wine[]>>; addToCart: (product: Wine) => void;
     removeFromCart: (productId: number) => void;
     quantityProducts: number;
+    totalPrice: number;
+
 }
 
-export const CartContext = createContext<CartContextType | undefined>(
+const CartContext = createContext<CartContextType | undefined>(
     undefined
 );
 
@@ -22,11 +24,25 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         }
     }, []);
 
+
     const addToCart = (product: Wine) => {
-        const updatedCart = [...cart, product];
-        setCart(updatedCart);
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        const existingProduct = cart.find(item => item.id === product.id);
+
+        if (existingProduct != null) {
+            const updatedCart = cart.map(item =>
+                item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+            );
+            setCart(updatedCart);
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+        } else {
+            const updatedCart = [...cart, { ...product, quantity: 1 as number }];
+            setCart(updatedCart);
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+            console.log(cart);
+
+        }
     };
+
 
     const removeFromCart = (productId: number) => {
         const updatedCart = cart.filter((product) => product.id !== productId);
@@ -34,11 +50,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem("cart", JSON.stringify(updatedCart));
     };
 
+    const totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
+    const totalPrice = cart.reduce((total, product) => total + (product.priceMember * product.quantity), 0)
+
+
     const contextValue: CartContextType = {
         cart,
+        setCart,
         addToCart,
         removeFromCart,
-        quantityProducts: cart.length,
+        quantityProducts: totalQuantity,
+        totalPrice,
+
     };
 
     return (

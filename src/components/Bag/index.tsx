@@ -14,7 +14,6 @@ export function Bag() {
     const handleBagClick = () => {
         setIsOpen(!isOpen)
         console.log(isOpen);
-
     }
     return (
         <S.BagContainer>

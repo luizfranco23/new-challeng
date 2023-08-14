@@ -5,6 +5,8 @@ import { FilterPrice } from "../../components/FilterPriceProducts";
 import { CatalogProducts } from "../../components/CatalogProducts";
 
 export default function Home() {
+
+
     return (
         <S.Home>
             <Header />

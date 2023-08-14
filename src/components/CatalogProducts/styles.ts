@@ -1,10 +1,19 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const ProductsContainer = styled.div`
   display: flex;
+  align-items: start;
+  width: 80%;
+  margin-left: 8%;
   flex-direction: column;
   gap: 32px;
-  margin-left: 130px;
+
+  @media (max-width: 800px) {
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+  }
 `;
 
 export const QuantityProducts = styled.div`
@@ -14,17 +23,21 @@ export const QuantityProducts = styled.div`
 `;
 
 export const CardContainer = styled.div`
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: start;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 32px;
-  width: 832px;
+  width: 100%;
+
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
 `;
 
-export const CardProduct = styled.div`
+export const CardProduct = styled(Link)`
   display: flex;
+  text-decoration: none;
   gap: 6px;
   flex-direction: column;
   align-items: center;
@@ -34,8 +47,17 @@ export const CardProduct = styled.div`
   box-shadow: 0px 9.733839988708496px 14.600760459899902px 0px
     rgba(0, 0, 0, 0.1);
 
+  @media (max-width: 800px) {
+    justify-content: center;
+    width: 200px;
+    height: 300px;
+  }
+
   img {
     width: 130px;
+    @media (max-width: 800px) {
+      width: 90px;
+    }
   }
 `;
 
@@ -103,6 +125,7 @@ export const MemberWine = styled.div`
   align-items: center;
 
   span {
+    color: var(--black-primary);
     font-size: 11px;
     font-style: normal;
     font-weight: 500;
@@ -144,4 +167,49 @@ export const NoMember = styled.div`
   font-weight: 700;
   color: var(--gray-primary);
   line-height: normal;
+`;
+
+export const PaginationButtons = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
+export const ButtonPagination = styled.button`
+  background: none;
+  border: none;
+  color: var(--pink-secondary);
+`;
+
+export const ButtonNumberPage = styled.button`
+  border: 2px solid var(--pink-secondary);
+  background: transparent;
+  color: var(--pink-secondary);
+  width: 38px;
+  height: 38px;
+  border-radius: 3px;
+
+  &.active:hover {
+    background-color: var(--pink-primary);
+    color: var(--white-primary);
+    border: none;
+  }
+
+  &:hover {
+    background-color: var(--pink-primary);
+    color: var(--white-primary);
+    border: none;
+  }
+
+  &.active {
+    background: var(--pink-secondary);
+    color: var(--white-primary);
+    border: none;
+  }
 `;

@@ -1,4 +1,5 @@
 export interface Wine {
+  quantity: number;
   id: number;
   image: string;
   name: string;
@@ -23,4 +24,5 @@ export interface ProctList {
   itemsPerPage: number;
   totalItems: number;
   items: Wine[];
+  quantity: number;
 }
