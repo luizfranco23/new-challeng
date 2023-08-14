@@ -23,6 +23,8 @@ const slideInFromRight = keyframes`
 
 export const Cart = styled.div`
   position: fixed;
+  overflow: auto;
+  overflow-x: hidden;
   background: #fff;
   width: 400px;
   background: var(--gray-secondary);
@@ -137,10 +139,11 @@ export const Price = styled.div`
 export const totalPriceProducts = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 15px 0;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 400px;
   flex-direction: column;
   background: var(--white-primary);
 `;

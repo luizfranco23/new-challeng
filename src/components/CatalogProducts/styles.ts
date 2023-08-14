@@ -125,6 +125,7 @@ export const MemberWine = styled.div`
   align-items: center;
 
   span {
+    color: var(--black-primary);
     font-size: 11px;
     font-style: normal;
     font-weight: 500;

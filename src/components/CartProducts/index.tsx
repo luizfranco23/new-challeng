@@ -68,15 +68,17 @@ export function CartProducst() {
                         </S.Price>
                     </S.ContainerBox>
                 ))}
-                <S.totalPriceProducts>
-                    <S.TotalPrice>
-                        <span>Total</span>
-                        <p>R${totalPrice.toFixed(2)}</p>
-                    </S.TotalPrice>
-                    <S.ButtonPurchase>
-                        Finalizar pedido
-                    </S.ButtonPurchase>
-                </S.totalPriceProducts>
+                {totalPrice > 0 ? (
+                    <S.totalPriceProducts>
+                        <S.TotalPrice>
+                            <span>Total</span>
+                            <p>R${totalPrice.toFixed(2)}</p>
+                        </S.TotalPrice>
+                        <S.ButtonPurchase>
+                            Finalizar pedido
+                        </S.ButtonPurchase>
+                    </S.totalPriceProducts>
+                ) : null}
             </S.Cart>
             <S.Overlay onClick={handleBagClick} />
         </S.ConteinerCart >
