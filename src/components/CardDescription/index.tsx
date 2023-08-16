@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as S from './style';
 import Arrow from "../../../src/img/arrow.svg";
@@ -7,9 +7,24 @@ import { ProductContext } from "../../context/ApiContext";
 import { useCart } from "../../context/cartContext";
 
 export default function CardDescription() {
+  const [quantity, setQuantity] = useState(1); // Default quantity is 1
+
+
   const { originalProducts } = useContext(ProductContext);
   const { id } = useParams();
   const selectedProductId = Number(id);
+
+
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
 
   const { addToCart } = useCart();
 
@@ -64,17 +79,73 @@ export default function CardDescription() {
           </S.ComenterSommelier>
           <S.ButtonAddProduct>
             <S.AmountProduct>
-              <div>-</div>
-              <p>1</p>
-              <div>+</div>
+              <div
+                onClick={decreaseQuantity}
+              >-</div>
+              <p>{quantity}</p>
+              <div
+                onClick={increaseQuantity}
+              >+</div>
             </S.AmountProduct>
             <S.Feature />
-            <S.AddProduct onClick={() => { addToCart(selectedProduct); }}>
+            <S.AddProduct
+              onClick={() => {
+                addToCart(selectedProduct, quantity);
+              }}
+            >
               Adicionar
             </S.AddProduct>
           </S.ButtonAddProduct>
         </S.InformationCatalog>
       </S.Catalog>
+
+      <S.ContainerMobile>
+        <S.CatalogContainer>
+          <S.InformationCatalogMobile>
+            <S.InformationContainer>
+              <S.RegionWine>
+                <span className='pinkText'>Vinhos</span>
+                <span> <img src={Arrow} alt="" /></span>
+                <span className='pinkText' >{selectedProduct?.country}</span>
+                <span> <img src={Arrow} alt="" /></span>
+                <span>{selectedProduct?.region}</span>
+              </S.RegionWine>
+              <S.NameProduct>
+                <h1>{selectedProduct?.name}</h1>
+              </S.NameProduct>
+              <S.ClassificationWine>
+                <img src={selectedProduct?.flag} alt="" />
+                <span>{selectedProduct?.country}</span>
+                <span>{selectedProduct?.type}</span>
+                <span>{selectedProduct?.size}</span>
+              </S.ClassificationWine>
+            </S.InformationContainer>
+            <S.ImageWine>
+              <img src={selectedProduct?.image} alt="" />
+            </S.ImageWine>
+            <S.ComentSommelierMobile>
+              <h3>Comentário do Sommelier</h3>
+              <p>{selectedProduct?.sommelierComment}</p>
+            </S.ComentSommelierMobile>
+          </S.InformationCatalogMobile>
+        </S.CatalogContainer>
+        <S.Button>
+          <div className='Off'>{selectedProduct?.discount}%OFF</div>
+          <S.Price>
+            <p className='price'>R$ {selectedProduct?.price}</p>
+            <div className='priceTextPink'>
+              <p>R$</p>
+              <p className='bigText'>{selectedProduct?.priceMember}</p>
+            </div>
+            <S.noMemberMobile>PREÇO NÃO SÓCIO R${selectedProduct?.priceNonMember}</S.noMemberMobile>
+          </S.Price>
+          <button
+            onClick={() => {
+              addToCart(selectedProduct, 1);
+            }}
+          >Adicionar</button>
+        </S.Button>
+      </S.ContainerMobile>
     </S.ContainerCatalog>
   )
 }

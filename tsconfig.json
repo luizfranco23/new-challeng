@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "types": ["node", "@testing-library/jest-dom"],
     "lib": [
       "dom",
       "dom.iterable",
