@@ -7,6 +7,7 @@ import { CartProvider } from "./context/cartContext";
 import { CartProductProvider } from "./context/ModifyQuantityProductCart";
 
 function App() {
+
   return (
     <ProductProvider>
       <BagProvider>

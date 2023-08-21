@@ -7,14 +7,12 @@ import { ProductContext } from "../../context/ApiContext";
 import { useCart } from "../../context/cartContext";
 
 export default function CardDescription() {
-  const [quantity, setQuantity] = useState(1); // Default quantity is 1
+  const [quantity, setQuantity] = useState(1);
 
 
   const { originalProducts } = useContext(ProductContext);
   const { id } = useParams();
   const selectedProductId = Number(id);
-
-
 
   const decreaseQuantity = () => {
     if (quantity > 1) {
@@ -38,7 +36,7 @@ export default function CardDescription() {
     <S.ContainerCatalog>
       <S.Catalog>
         <S.ImageProduct>
-          <img src={selectedProduct.image} alt="" />
+          <img src={selectedProduct.image} alt="Produto" />
         </S.ImageProduct>
         <S.InformationCatalog>
           <S.NameProduct>

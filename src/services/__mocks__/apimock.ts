@@ -1,4 +1,6 @@
-export const apiMock = {
+import type { Wine } from "../../types/products";
+
+export const apiMock: Wine = {
   page: 1,
   totalPages: 1,
   itemsPerPage: 4,
@@ -25,10 +27,10 @@ export const apiMock = {
     {
       id: 1,
       image: "img/img.png",
-      name: "Vinho 2",
+      name: "Vinho bom",
       price: 175,
       discount: 45,
-      priceMember: 96,
+      priceMember: 40,
       priceNonMember: 114,
       type: "Tinto",
       classification: "Seco",
@@ -46,12 +48,11 @@ export const apiMock = {
       name: "Vinho 3",
       price: 175,
       discount: 45,
-      priceMember: 96,
+      priceMember: 130,
       priceNonMember: 114,
       type: "Tinto",
       classification: "Seco",
       size: "750 ml",
-      Rating: 4,
       rating: 4,
       avaliations: 292,
       country: "Portugal",
@@ -65,7 +66,7 @@ export const apiMock = {
       name: "Vinho 4",
       price: 175,
       discount: 45,
-      priceMember: 96,
+      priceMember: 122,
       priceNonMember: 114,
       type: "Tinto",
       classification: "Seco",

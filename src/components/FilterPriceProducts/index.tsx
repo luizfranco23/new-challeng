@@ -3,7 +3,7 @@ import * as S from './styles'
 import type { PriceRange } from "../../types/priceRange";
 import { ProductContext } from "../../context/ApiContext";
 
-export function FilterPrice() {
+export default function FilterPrice() {
     const { originalProducts, setProducts } = useContext(ProductContext);
 
     const [selectedRange, setSelectedRange] = useState<PriceRange | null>(null);
@@ -22,14 +22,13 @@ export function FilterPrice() {
         } else {
             const filteredProducts = originalProducts.filter(
                 product =>
-                    product.price >= selectedRange.min && product.price <= selectedRange.max
+                    product.priceMember >= selectedRange.min && product.priceMember <= selectedRange.max
             );
             if (filteredProducts.length === 0) {
                 setProducts(originalProducts);
             } else {
                 setProducts(filteredProducts);
             }
-            console.log(filteredProducts);
         }
     }, [selectedRange, setProducts, originalProducts]);
 

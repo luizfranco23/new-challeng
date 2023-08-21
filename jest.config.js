@@ -1,8 +1,13 @@
 module.exports = {
-  testPathIgnorePatterns: ["/node_modules/"],
-  setupFilesAfterEnv: ["./setupTest.ts"],
+  extensionsToTreatAsEsm: [".js", ".jsx", ".ts", ".tsx"],
+
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+    "\\.(js|jsx|mjs|cjs|ts|tsx)$": "babel-jest",
   },
-  testEnvironment: "jsdom",
+
+  globals: {
+    "ts-jest": {
+      useESM: true,
+    },
+  },
 };
