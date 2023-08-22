@@ -4,20 +4,17 @@ import bagImg from '../../img/bag.png'
 import { BagContext } from "../../context/cartOpenContext";
 import { useCart } from "../../context/cartContext";
 
-
-
-export function Bag() {
+export default function Bag() {
 
     const { isOpen, setIsOpen } = useContext(BagContext);
     const { quantityProducts } = useCart();
 
     const handleBagClick = () => {
         setIsOpen(!isOpen)
-        console.log(isOpen);
     }
     return (
         <S.BagContainer>
-            <img src={bagImg} alt="Sacola de Produtos" onClick={handleBagClick} />
+            <img src={bagImg} alt="Sacola de produtos" onClick={handleBagClick} />
             <S.QuantityItems>{quantityProducts}</S.QuantityItems>
         </S.BagContainer>
     );

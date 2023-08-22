@@ -3,11 +3,11 @@ import type { Wine } from "../types/products";
 
 interface CartContextType {
     cart: Wine[];
-    setCart: React.Dispatch<React.SetStateAction<Wine[]>>; addToCart: (product: Wine) => void;
+    setCart: React.Dispatch<React.SetStateAction<Wine[]>>;
+    addToCart: (product: Wine, quantity: number) => void; // Update the type here
     removeFromCart: (productId: number) => void;
     quantityProducts: number;
     totalPrice: number;
-
 }
 
 const CartContext = createContext<CartContextType | undefined>(
@@ -25,21 +25,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }, []);
 
 
-    const addToCart = (product: Wine) => {
+    const addToCart = (product: Wine, quantity: number) => {
         const existingProduct = cart.find(item => item.id === product.id);
 
         if (existingProduct != null) {
             const updatedCart = cart.map(item =>
-                item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+                item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
             );
             setCart(updatedCart);
             localStorage.setItem("cart", JSON.stringify(updatedCart));
         } else {
-            const updatedCart = [...cart, { ...product, quantity: 1 as number }];
+            const updatedCart = [...cart, { ...product, quantity: quantity }];
             setCart(updatedCart);
             localStorage.setItem("cart", JSON.stringify(updatedCart));
-            console.log(cart);
-
         }
     };
 

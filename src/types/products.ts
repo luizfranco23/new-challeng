@@ -1,4 +1,5 @@
 export interface Wine {
+  items: any;
   quantity: number;
   id: number;
   image: string;
@@ -19,6 +20,7 @@ export interface Wine {
 }
 
 export interface ProctList {
+  apiMock: Wine;
   page: number;
   totalPages: number;
   itemsPerPage: number;

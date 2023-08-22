@@ -3,7 +3,7 @@ import * as S from './styles'
 import logoImg from '../../img/logo.svg'
 import { InputProduct } from "../InputProduct";
 import acount from '../../img/account.svg';
-import { Bag } from "../Bag";
+import Bag from "../Bag/index";
 import { CartProducst } from "../CartProducts";
 import { BagContext } from "../../context/cartOpenContext";
 import Menu from '../../img/menu.png'

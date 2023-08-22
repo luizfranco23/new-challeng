@@ -78,7 +78,7 @@ export function CatalogProducts() {
                             </S.MemberWine>
                             <S.NoMember>NÃO SÓCIO R${item.priceNonMember}</S.NoMember>
                         </S.CardProduct>
-                        <S.Button onClick={() => { addToCart(item); }}>ADICIONAR</S.Button>
+                        <S.Button onClick={() => { addToCart(item, 1); }}>ADICIONAR</S.Button>
                     </S.InvolvedProduct>
                 ))}
             </S.CardContainer>
