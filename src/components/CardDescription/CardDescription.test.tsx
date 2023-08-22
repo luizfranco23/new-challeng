@@ -1,19 +1,12 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import CardDescription from "./index";
 import { CartProvider } from "../../context/cartContext";
 import { CartProductProvider } from "../../context/ModifyQuantityProductCart";
-import { MemoryRouter, Route } from "react-router-dom";
-import { ProductContext, ProductProvider } from "../../context/ApiContext";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { apiMock } from "../../services/__mocks__/apimock";
-import axios from "axios";
+import { ProductContext } from "../../context/ApiContext";
 
-// Mock axios outside the describe block
-jest.mock("axios", () => ({
-    get: jest.fn(() => Promise.resolve({ data: apiMock.items })),
-}));
-
-// Define the mockContext outside the describe block
 const mockContext = {
     products: [],
     setProducts: jest.fn(),
@@ -28,25 +21,45 @@ const renderComponent = () => {
         <MemoryRouter initialEntries={[`/product/${productId}`]}>
             <CartProvider>
                 <CartProductProvider>
-                    <ProductProvider>
-                        <Route path="/products/:id">
-                            <CardDescription />
-                        </Route>
-                    </ProductProvider>
+                    <ProductContext.Provider value={mockContext}>
+                        <Routes>
+                            <Route path="/product/:id" element={<CardDescription />} />
+                        </Routes>
+                    </ProductContext.Provider>
                 </CartProductProvider>
             </CartProvider>
-        </MemoryRouter>
+        </MemoryRouter >
     );
     return renderCart;
 };
 
 describe('<CardDescription/>', () => {
     it('should render name of product', async () => {
+
         renderComponent();
 
-        await waitFor(() => {
-            const nameProduct = screen.getByText('Vinho bom');
-            expect(nameProduct).toBeInTheDocument();
-        });
+        const nameProduct = screen.getByRole('heading', { name: /vinho bom/i })
+        expect(nameProduct).toBeInTheDocument()
+
     });
+
+    it('should render region of product', () => {
+        renderComponent();
+
+        screen.logTestingPlaygroundURL();
+
+        const regionProducts = screen.getAllByText(/portugal/i);
+
+        expect(regionProducts).toHaveLength(4);
+    });
+
+    test('should add product to cart when "Adicionar" button is clicked', () => {
+        renderComponent();
+
+
+        const buttonAddProduct = screen.getByRole('button', { name: 'Adicionar' });
+        fireEvent.click(buttonAddProduct);
+
+    });
+
 });

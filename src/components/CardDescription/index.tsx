@@ -29,7 +29,7 @@ export default function CardDescription() {
   const selectedProduct = originalProducts.find(product => product.id === selectedProductId);
 
   if (selectedProduct == null) {
-    return <p>Produto não encontrado.</p>;
+    return <p>Produto nao encontrado</p>;
   }
 
   return (
