@@ -46,20 +46,37 @@ describe('<CardDescription/>', () => {
     it('should render region of product', () => {
         renderComponent();
 
-        screen.logTestingPlaygroundURL();
-
         const regionProducts = screen.getAllByText(/portugal/i);
 
         expect(regionProducts).toHaveLength(4);
     });
 
-    test('should add product to cart when "Adicionar" button is clicked', () => {
+    it('should add product to cart when "Adicionar" button is clicked', () => {
         renderComponent();
 
+        screen.logTestingPlaygroundURL();
 
         const buttonAddProduct = screen.getByRole('button', { name: 'Adicionar' });
         fireEvent.click(buttonAddProduct);
 
+    });
+
+
+    it('should decrement quantity when "-" button is clicked', () => {
+        renderComponent();
+
+        const decrementButton = screen.getByText('-');
+
+        fireEvent.click(decrementButton);
+
+    });
+
+    it('should append quantity when "+" button is clicked', () => {
+        renderComponent();
+
+        const decrementButton = screen.getByText('+');
+
+        fireEvent.click(decrementButton);
     });
 
 });
